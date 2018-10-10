@@ -1,5 +1,14 @@
-<!-- <div *ngFor="let img of images">
-  <div>
-    <img [src]="'https://farm' + img.farm + '.staticflickr.com/' + img.server + '/' + img.id + '_' + img.secret + '.jpg'" alt="">
+<gallery-hero (searchValue)="searchDogs($event)"></gallery-hero>
+
+<div class="container">
+  <div class="row">
+    <div class="col-4" *ngFor="let img of images">
+      <div 
+        class="img-box"
+        [ngStyle]="{'background-image': 'url(https://farm' + img.farm + '.staticflickr.com/' + img.server + '/' + img.id + '_' + img.secret + '.jpg)'}"></div>
+      <!-- <img
+        class="resposive-img" 
+        [src]="'https://farm' + img.farm + '.staticflickr.com/' + img.server + '/' + img.id + '_' + img.secret + '.jpg'" alt=""> -->
+    </div>
   </div>
-</div> -->
+</div>

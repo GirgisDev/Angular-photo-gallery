@@ -12,7 +12,13 @@ export class HomeComponent implements OnInit {
   constructor(private photosService: PhotosService) { }
 
   ngOnInit() {
-    this.photosService.testFlicker().subscribe(res => {
+    this.photosService.getDogs().subscribe(res => {
+      this.images = res['photos'].photo;
+    })
+  }
+
+  searchDogs(value) {
+    this.photosService.searchDogs(value).subscribe(res => {
       this.images = res['photos'].photo;
     })
   }

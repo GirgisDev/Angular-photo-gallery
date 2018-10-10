@@ -8,6 +8,7 @@ import { HomeComponent } from './components/home/home.component';
 
 import { InterceptorService } from './services/interceptor.service';
 import { PhotosService } from './services/photos.service';
+import { HeroComponent } from './components/hero/hero.component';
 
 export const httpInterceptorProviders = [
   { provide: HTTP_INTERCEPTORS, useClass: InterceptorService, multi: true },
@@ -16,7 +17,8 @@ export const httpInterceptorProviders = [
 @NgModule({
   declarations: [
     AppComponent,
-    HomeComponent
+    HomeComponent,
+    HeroComponent
   ],
   imports: [
     BrowserModule,

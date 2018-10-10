@@ -1,0 +1,15 @@
+<div class="hero">
+  <div class="container">
+    <h3 class="hero__logo">Photo gallery</h3>
+    <div class="text-center">
+      <h1>Lovely Dogs' photo gallery</h1>
+      <p>browse and search for photos of dogs</p>
+      <input 
+        type="text"
+        class="input-style"
+        #search
+        placeholder="Search dogs"
+        (keyup.enter)="emitSearch(search.value)">
+    </div>
+  </div>
+</div>
