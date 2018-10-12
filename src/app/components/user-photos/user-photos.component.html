@@ -1,0 +1,64 @@
+<gallery-hero [noSearch]="true"></gallery-hero>
+
+<div class="container breadcrumb">
+  <div class="row">
+    <a routerLink="/">
+      <img class="breadcrumb__icon" src="./assets/images/back.svg" alt="go back">
+      <span class="breadcrumb__text">Home</span>
+    </a>
+  </div>
+</div>
+
+<div class="container user-info" *ngIf="userInfo['id']">
+  <div class="row">
+    <img
+      src="./assets/images/user.svg"
+      alt="user" 
+      class="user-info__avatar">
+    <div class="col">
+      <h2 class="user-info__heading">
+        {{ userInfo['realname']._content }} <br>
+        {{ userInfo['location']._content }}
+      </h2>
+      <h4 class="user-info__heading">User name: {{ '@' + userInfo['username']._content }}</h4>
+      <div>
+        <div class="tag">Number of photos: {{ userInfo['photos'].count._content }}</div>
+        <div class="tag">First date taken: {{ userInfo['photos'].firstdatetaken._content | date }}</div>
+      </div>
+      <p
+        [innerHTML]="'Bio: ' + userInfo['description']._content" 
+        *ngIf="userInfo['description']._content.length">
+      </p>
+    </div>
+  </div>
+  <hr>
+</div>
+
+<div class="container">
+  <div 
+    class="row" 
+    *ngIf="images.length"
+    infiniteScroll
+    [infiniteScrollDistance]="2"
+    [infiniteScrollThrottle]="50"
+    (scrolled)="onScroll()">
+    <div class="col-4" *ngFor="let img of images">
+      <div 
+        class="img-box"
+        [ngStyle]="{'background-image': 'url(https://farm' + img.farm + '.staticflickr.com/' + img.server + '/' + img.id + '_' + img.secret + '.jpg)'}">
+        <div class="img-box__info text-center">
+          <div class="img-box__info__bit">{{ img.title }}</div>
+          <div class="img-box__info__bit">
+            {{ img.datetaken | date }}
+          </div>
+          <div *ngIf="img.description._content.length">
+            Description: {{ (img.description._content | slice: 0 : 30) + (img.description._content.length > 30 ? '....' : '') }}
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="row loading-row" *ngIf="loading">
+    <img class="loading-row__img" src="./assets/images/loading.svg" alt="">
+  </div>
+</div>

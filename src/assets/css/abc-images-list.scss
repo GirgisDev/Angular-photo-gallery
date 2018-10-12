@@ -1,0 +1,41 @@
+.img-box {
+  position: relative;
+  overflow: hidden;
+  height: 220px;
+  margin-bottom: 20px;
+  border-radius: 8px;
+  background-size: 100%;
+  background-repeat: no-repeat;
+  cursor: pointer;
+
+  &:hover  &__info {
+    opacity: 1;
+  }
+
+  &__info {
+    position: absolute;
+    bottom: 0;
+    background: rgba(11, 11, 11, 0.8);
+    color: #CDCDCD;
+    padding: 15px;
+    width: 100%;
+    font-size: 0.9rem;
+    font-weight: bold;
+    opacity: 0;
+
+    -webkit-transition: opacity .2s ease-in-out;
+    -moz-transition: opacity .2s ease-in-out;
+    -ms-transition: opacity .2s ease-in-out;
+    -o-transition: opacity .2s ease-in-out;
+    transition: opacity .2s ease-in-out;
+
+    &__bit {
+      margin-bottom: 8px;
+    }
+
+    &--link {
+      color: #00c4cc;
+      text-decoration: underline;
+    }
+  }
+}

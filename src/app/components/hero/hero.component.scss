@@ -1,8 +1,16 @@
 .hero {
   width: 100%;
-  min-height: 260px;
-  margin-bottom: 20px;
+  margin-bottom: 40px;
   padding: 10px 0;
   color: #FFF;
-  background: linear-gradient(to right,#00c4cc,#7d2ae8);
+  background: linear-gradient(to right, #00c4cc, #7d2ae8);
+  
+  &__logo {
+    text-decoration: none;
+    color: inherit;
+  }
+  &__search-seaction {
+    margin-bottom: 30px;
+  }
+
 }

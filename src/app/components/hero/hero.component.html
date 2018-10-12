@@ -1,15 +1,31 @@
 <div class="hero">
   <div class="container">
-    <h3 class="hero__logo">Photo gallery</h3>
-    <div class="text-center">
+    <h3><a class="hero__logo" routerLink="/">Photo gallery</a></h3>
+    <div class="hero__search-seaction text-center" *ngIf="!noSearch">
       <h1>Lovely Dogs' photo gallery</h1>
       <p>browse and search for photos of dogs</p>
-      <input 
-        type="text"
-        class="input-style"
-        #search
-        placeholder="Search dogs"
-        (keyup.enter)="emitSearch(search.value)">
+      <div class="col-4 offset-4">
+        <div class="form-group">
+          <input 
+            type="text"
+            class="input-style"
+            #search
+            placeholder="Search dogs"
+            (keyup.enter)="emitSearch(search.value)">
+          <img
+            *ngIf="!searchCalled"
+            (click)="emitSearch(search.value)" 
+            class="input-icon" 
+            src="./assets/images/search.svg" 
+            alt="search">
+          <img
+            *ngIf="searchCalled"
+            (click)="emitSearch()" 
+            class="input-icon input-icon--smaller" 
+            src="./assets/images/close.svg" 
+            alt="remove search">
+        </div>
+      </div>
     </div>
   </div>
 </div>
