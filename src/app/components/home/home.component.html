@@ -8,7 +8,7 @@
     [infiniteScrollDistance]="2"
     [infiniteScrollThrottle]="50"
     (scrolled)="onScroll()">
-    <div class="col-4" *ngFor="let img of images">
+    <div class="col-sm-12 col-md-6 col-lg-4" *ngFor="let img of images">
       <div 
         class="img-box"
         [ngStyle]="{'background-image': 'url(https://farm' + img.farm + '.staticflickr.com/' + img.server + '/' + img.id + '_' + img.secret + '.jpg)'}">
@@ -27,5 +27,17 @@
   </div>
   <div class="row loading-row" *ngIf="loading">
     <img class="loading-row__img" src="./assets/images/loading.svg" alt="">
+  </div>
+</div>
+
+<div class="container no-content" *ngIf="!images.length && !loading">
+  <div class="row">
+    <div class="col">
+      <img class="no-content__img" src="./assets/images/alert.svg" alt="alert">
+      <h4 class="no-content__text">
+        Theres is no results for your search!<br>
+        Please make sure you have no typos, or try another keywords.
+      </h4>
+    </div>
   </div>
 </div>

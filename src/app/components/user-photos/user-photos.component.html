@@ -17,8 +17,12 @@
       class="user-info__avatar">
     <div class="col">
       <h2 class="user-info__heading">
-        {{ userInfo['realname']._content }} <br>
-        {{ userInfo['location']._content }}
+        <span *ngIf="userInfo['realname']">
+          {{ userInfo['realname']._content }}
+        </span> <br>
+        <span *ngIf="userInfo['location']">
+          {{ userInfo['location']._content }}
+        </span>
       </h2>
       <h4 class="user-info__heading">User name: {{ '@' + userInfo['username']._content }}</h4>
       <div>
@@ -42,7 +46,7 @@
     [infiniteScrollDistance]="2"
     [infiniteScrollThrottle]="50"
     (scrolled)="onScroll()">
-    <div class="col-4" *ngFor="let img of images">
+    <div class="col-sm-12 col-md-6 col-lg-4" *ngFor="let img of images">
       <div 
         class="img-box"
         [ngStyle]="{'background-image': 'url(https://farm' + img.farm + '.staticflickr.com/' + img.server + '/' + img.id + '_' + img.secret + '.jpg)'}">
