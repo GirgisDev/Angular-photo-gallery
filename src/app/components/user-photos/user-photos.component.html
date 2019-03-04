@@ -38,31 +38,28 @@
   <hr>
 </div>
 
-<div class="container">
+<div 
+  class="images-wrapper images-wrapper--smaller" 
+  *ngIf="images.length"
+  infiniteScroll
+  [infiniteScrollDistance]="2"
+  [infiniteScrollThrottle]="50"
+  (scrolled)="onScroll()">
   <div 
-    class="row" 
-    *ngIf="images.length"
-    infiniteScroll
-    [infiniteScrollDistance]="2"
-    [infiniteScrollThrottle]="50"
-    (scrolled)="onScroll()">
-    <div class="col-sm-12 col-md-6 col-lg-4" *ngFor="let img of images">
-      <div 
-        class="img-box"
-        [ngStyle]="{'background-image': 'url(https://farm' + img.farm + '.staticflickr.com/' + img.server + '/' + img.id + '_' + img.secret + '.jpg)'}">
-        <div class="img-box__info text-center">
-          <div class="img-box__info__bit">{{ img.title }}</div>
-          <div class="img-box__info__bit">
-            {{ img.datetaken | date }}
-          </div>
-          <div *ngIf="img.description._content.length">
-            Description: {{ (img.description._content | slice: 0 : 30) + (img.description._content.length > 30 ? '....' : '') }}
-          </div>
-        </div>
+    *ngFor="let img of images"
+    class="images-wrapper__img-box"
+    [ngStyle]="{'background-image': 'url(https://farm' + img.farm + '.staticflickr.com/' + img.server + '/' + img.id + '_' + img.secret + '.jpg)'}">
+    <div class="images-wrapper__img-box__info text-center">
+      <div class="images-wrapper__img-box__info__bit">{{ img.title }}</div>
+      <div class="images-wrapper__img-box__info__bit">
+        {{ img.datetaken | date }}
+      </div>
+      <div *ngIf="img.description._content.length">
+        Description: {{ (img.description._content | slice: 0 : 30) + (img.description._content.length > 30 ? '....' : '') }}
       </div>
     </div>
   </div>
-  <div class="row loading-row" *ngIf="loading">
-    <img class="loading-row__img" src="./assets/images/loading.svg" alt="">
-  </div>
+</div>
+<div class="row loading-row" *ngIf="loading">
+  <img class="loading-row__img" src="./assets/images/loading.svg" alt="">
 </div>
