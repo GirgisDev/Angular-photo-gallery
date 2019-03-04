@@ -8,9 +8,9 @@ export class PhotosService {
   private tags = "dogs"
   private apiBaseUrl = "https://api.flickr.com/services/rest/?method=flickr."
   private apiURLs = {
-    url: this.apiBaseUrl + "photos.search&api_key=8dda69764bfd6a77f90a735f46321fb3&per_page=100&content_type=photos&extras=date_taken,owner_name,description&format=json&nojsoncallback=1&tags=",
-    userPhotosUrl: this.apiBaseUrl +  "people.getPhotos&api_key=8dda69764bfd6a77f90a735f46321fb3&per_page=100&extras=date_taken,owner_name,description&format=json&nojsoncallback=1&user_id=",
-    userInfoUrl: this.apiBaseUrl + "people.getInfo&api_key=8dda69764bfd6a77f90a735f46321fb3&format=json&nojsoncallback=1&user_id="
+    url: this.apiBaseUrl + "photos.search&api_key=3b40d98cf7066b319b511612328fca5b&per_page=100&content_type=photos&extras=date_taken,owner_name,description&format=json&nojsoncallback=1&tags=",
+    userPhotosUrl: this.apiBaseUrl +  "people.getPhotos&api_key=3b40d98cf7066b319b511612328fca5b&per_page=100&extras=date_taken,owner_name,description&format=json&nojsoncallback=1&user_id=",
+    userInfoUrl: this.apiBaseUrl + "people.getInfo&api_key=3b40d98cf7066b319b511612328fca5b&format=json&nojsoncallback=1&user_id="
   };
 
   constructor(private http: HttpClient) { }

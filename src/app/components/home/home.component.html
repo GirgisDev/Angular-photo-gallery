@@ -1,33 +1,30 @@
 <gallery-hero (searchValue)="searchDogs($event, 1)"></gallery-hero>
 
-<div class="container">
+<div 
+  class="images-wrapper" 
+  *ngIf="images.length"
+  infiniteScroll
+  [infiniteScrollDistance]="2"
+  [infiniteScrollThrottle]="50"
+  (scrolled)="onScroll()">
   <div 
-    class="row" 
-    *ngIf="images.length"
-    infiniteScroll
-    [infiniteScrollDistance]="2"
-    [infiniteScrollThrottle]="50"
-    (scrolled)="onScroll()">
-    <div class="col-sm-12 col-md-6 col-lg-4" *ngFor="let img of images">
-      <div 
-        class="img-box"
-        [ngStyle]="{'background-image': 'url(https://farm' + img.farm + '.staticflickr.com/' + img.server + '/' + img.id + '_' + img.secret + '.jpg)'}">
-        <div class="img-box__info text-center">
-          <div class="img-box__info__bit">{{ img.title }}</div>
-          <div class="img-box__info__bit">
-            Taken by: <a routerLink="/user/{{img.owner}}" class="img-box__info--link">{{ img.ownername }}</a><br>
-            {{ img.datetaken | date }}
-          </div>
-          <div *ngIf="img.description._content.length">
-            Description: {{ (img.description._content | slice: 0 : 30) + (img.description._content.length > 30 ? '....' : '') }}
-          </div>
-        </div>
+    *ngFor="let img of images"
+    class="images-wrapper__img-box"
+    [ngStyle]="{'background-image': 'url(https://farm' + img.farm + '.staticflickr.com/' + img.server + '/' + img.id + '_' + img.secret + '.jpg)'}">
+    <div class="images-wrapper__img-box__info text-center">
+      <div class="images-wrapper__img-box__info__bit">{{ img.title }}</div>
+      <div class="images-wrapper__img-box__info__bit">
+        Taken by: <a routerLink="/user/{{img.owner}}" class="img-box__info--link">{{ img.ownername }}</a><br>
+        {{ img.datetaken | date }}
+      </div>
+      <div *ngIf="img.description._content.length">
+        Description: {{ (img.description._content | slice: 0 : 30) + (img.description._content.length > 30 ? '....' : '') }}
       </div>
     </div>
   </div>
-  <div class="row loading-row" *ngIf="loading">
-    <img class="loading-row__img" src="./assets/images/loading.svg" alt="">
-  </div>
+</div>
+<div class="row loading-row" *ngIf="loading">
+  <img class="loading-row__img" src="./assets/images/loading.svg" alt="">
 </div>
 
 <div class="container no-content" *ngIf="!images.length && !loading">
@@ -36,7 +33,7 @@
       <img class="no-content__img" src="./assets/images/alert.svg" alt="alert">
       <h4 class="no-content__text">
         Theres is no results for your search!<br>
-        Please make sure you have no typos, or try another keywords.
+        Please make sure you have no typos, or try other keywords.
       </h4>
     </div>
   </div>
